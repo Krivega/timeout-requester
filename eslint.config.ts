@@ -1,8 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
+import { fileURLToPath } from 'node:url';
+
 import { includeIgnoreFile } from '@eslint/compat';
 import config from '@krivega/eslint-config/jest';
 import { defineConfig } from 'eslint/config';
-import { fileURLToPath } from 'node:url';
 
 const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url));
 
@@ -13,7 +13,7 @@ export default defineConfig([
     languageOptions: {
       parserOptions: {
         project: './tsconfig.json',
-        tsconfigRootDir: './',
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     ignores: [
